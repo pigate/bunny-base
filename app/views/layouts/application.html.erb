@@ -10,18 +10,63 @@
 	<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div id="nav">
-    Tuzi Chef
-    <%= link_to "Home", root_url %>
-    <%= link_to "Recipes", recipes_path %>
-    <% if user_signed_in? %>
-      <%= link_to "Account", edit_user_registration_path %>
-      <%= link_to "Sign out", destroy_user_session_path %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %>
-      <%= link_to "Sign in", new_user_session_path %>
-    <% end %>
+  <div id="header">
+    <div id="logo-section">
+      <div id="logo-box">
+        <img src="images/logo.png">
+        <div id="logo-name">TUZI CHEF</div>
+      </div>
+    </div>
+    <div id="navbar">
+      <div id="menu-bttn-wrapper">
+        <a id="menu-bttn" href=""><img src="images/black-menu-bttn.png"></a>
+      </div>
+      <div id="mid-stuff">
+	 <ul id="menu">
+		 <a id="exit-menu-bttn" href="">X</a>
+			  <li><%= link_to "Home", root_url %></li>
+			  <li id="prime" ><%= link_to "Recipes", recipes_path, id: "prime-link" %><a id="more-cat-li-bttn" href=""><img src="images/triangle-down-button.png"></a>
+				<div id="second-menu">
+				  <div id="second-menu-link"><a href="">CATEGORY 1</a></div>
+				  <div id="second-menu-link"><a href="">CATEGORY 2</a></div>
+				  <div id="second-menu-link"><a href="">CATEGORY 3</a></div>
+				  <div id="second-menu-link"><a href="">CATEGORY 3</a></div>
+				</div>
+			  </li>
+			  <li><a href="">HACK RECIPES</a></li>
+			  
+	  </ul>
+	  <form id="search">
+			<input type="text" id="search-box" placeholder="type ingredient or recipe">
+			<input type="image" src="images/search-icon.png" id="search-bttn" value="search">
+	  </form>
+      </div>	
+		
+      <div id="upload-link">
+	 <a href="">+</a>
+		
+      </div>
+      <ul id="account-links">
+	
+		  <% if user_signed_in? %>
+		    <li id="prime2">
+		      <%= link_to "Account", edit_user_registration_path, id: "prime-link2" %><a id="more-accnt-li-bttn" href=""><img src="images/triangle-down-button.png"></a>
+		      <div id="second-menu2">
+			  <div id="second-menu2-link"><%= link_to "Account", edit_user_registration_path %></div>
+			  <div id="second-menu2-link"><a href="">Settings</a></div>
+			  <div id="second-menu2-link"><%= link_to "Sign out", destroy_user_session_path %></div>
+		      </div>
+		    </li>
+		  <% else %>
+		    <%= link_to "Sign up", new_user_registration_path %>
+		      <%= link_to "Sign up", new_user_registration_path %>
+		      <%= link_to "Sign in", new_user_session_path %>
+	          <% end %>  
+	
+      </ul>
+    </div>
   </div>
+  
   <%= yield %>
 
 </body>
